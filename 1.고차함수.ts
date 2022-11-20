@@ -43,7 +43,3 @@ function tail(n: number, prev = 1, prevFibo = 0): number {
   const isSorted = <T, K>(as: T[], orderedFn: (as: T[]) => K) => orderedFn(as)
   console.log(isSorted([1, 5, 2, 3, 2, 4, 5], (arr) => arr.sort((a, b) => a - b)))
 }
-
-{
-  // use Example 3
-}

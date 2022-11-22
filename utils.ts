@@ -11,3 +11,15 @@ export function tuple<A, B, C, D, E>(a: A, b: B, c?: C, d?: D, e?: E): any[] {
 /**
  * Option
  */
+export namespace Option {
+  export const map = <A>() => {}
+
+  export const filter = () => {}
+
+  export const flatMap = () => {}
+
+  // 해당 값이 없다면 ->
+  export const getOrElse = () => {}
+
+  export const orElse = () => {}
+}

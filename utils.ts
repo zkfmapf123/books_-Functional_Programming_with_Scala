@@ -23,3 +23,8 @@ export namespace Option {
 
   export const orElse = () => {}
 }
+
+/**
+ * Either
+ */
+export namespace Either {}

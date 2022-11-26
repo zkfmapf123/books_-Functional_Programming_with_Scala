@@ -1,4 +1,12 @@
 /**
+ * go, asyncGo
+ */
+export const go = <T>(params: T, ...fns: Function[]): T => {
+  for (const fn of fns) params = fn(params)
+  return params
+}
+
+/**
  * tuple
  */
 export function tuple<A, B>(a: A, b: B): any[]
@@ -28,3 +36,8 @@ export namespace Option {
  * Either
  */
 export namespace Either {}
+
+/**
+ * Lazy
+ */
+export namespace Lazy {}

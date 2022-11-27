@@ -41,3 +41,8 @@ export namespace Either {}
  * Lazy
  */
 export namespace Lazy {}
+
+/**
+ * TranspositionMap
+ */
+export const transposition = <A, B>(ra: A, rb: A, fn: (ra: A, rb: A) => B): B => fn(ra, rb)

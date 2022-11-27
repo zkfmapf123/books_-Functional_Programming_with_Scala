@@ -1,4 +1,4 @@
-import { go } from './utils'
+import { go, transposition } from './utils'
 
 {
   /**
@@ -67,11 +67,6 @@ import { go } from './utils'
 
       return [f, this]
     }
-
-    /**
-     * 이항
-     */
-    transpositionMap() {}
   }
 
   const rng = new BetterRNG(100)
@@ -90,4 +85,11 @@ import { go } from './utils'
     (rand) => rng.ifElse(rand, 10, 100, -100)
   )
   console.log(val1, val2, val3)
+
+  // 이항함수
+  const ra = new BetterRNG(20)
+  const rb = new BetterRNG(17)
+
+  const transpositionNum = transposition(ra.nextInt(), rb.nextInt(), ([raNum], [rbNum]) => raNum + rbNum)
+  console.log(transpositionNum)
 }

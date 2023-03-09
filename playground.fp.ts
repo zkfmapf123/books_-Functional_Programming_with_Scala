@@ -1,4 +1,5 @@
-import { match, matchValue } from './fp.util'
+import { map, mergeMap } from './utils/list'
+import { match, matchValue } from './utils/match'
 
 {
   // Recursive 재귀
@@ -108,4 +109,26 @@ import { match, matchValue } from './fp.util'
   const value = matchValue<number[], number, number, number>(list, listMoreThan10, listAllMinus, listAllPlus)
   const value2 = matchValue<number[], number, number, number>(list2, listMoreThan10, listAllMinus, listAllPlus)
   console.log(value, value2)
+}
+
+{
+  // Map , recurMap
+
+  let arr = []
+  for (let i = 0; i < 1000; i++) {
+    arr.push(i)
+  }
+
+  console.time()
+  const v1 = map(arr, (l) => l + 10)
+  console.timeEnd()
+}
+
+{
+  // MergeMap
+  const v1 = mergeMap<number, number>([1, 2, 3], [4, 5, 6])
+  const v2 = mergeMap<number, string, boolean>([1, 2, 3], ['11', '22', '33'], [true, true, false])
+
+  console.log(v1)
+  console.log(v2)
 }

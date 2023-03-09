@@ -1,3 +1,5 @@
+import { match, matchValue } from './fp.util'
+
 {
   // Recursive 재귀
   const fibo = (num: number): number => {
@@ -66,4 +68,44 @@
   )
 
   console.log(v)
+}
+
+{
+  const list = [1, 2, 3, 4, 5]
+
+  const isMatch = match<number[]>(
+    list,
+    (l) => l.includes(1),
+    (l) => l.includes(2),
+    (l) => l.includes(3),
+    (l) => l.includes(4)
+  )
+
+  console.log(isMatch)
+}
+
+{
+  const list = [1, 2, 3, 4, 5]
+  const list2 = [10, 20, 30, 40, 50]
+
+  const reducer = (list: number[]) => list.reduce((acc, cur) => acc + cur, 0)
+
+  const listMoreThan10 = (list: number[]): [boolean, number] => {
+    if (list.filter((item) => item >= 10)?.length === 0) return [false, 0]
+    return [true, reducer(list)]
+  }
+
+  const listAllMinus = (list: number[]): [boolean, number] => {
+    if (list.filter((item) => item <= -1)?.length === 0) return [false, 0]
+    return [true, reducer(list)]
+  }
+
+  const listAllPlus = (list: number[]): [boolean, number] => {
+    if (list.filter((item) => item >= 1)?.length === 0) return [false, 0]
+    return [true, reducer(list)]
+  }
+
+  const value = matchValue<number[], number, number, number>(list, listMoreThan10, listAllMinus, listAllPlus)
+  const value2 = matchValue<number[], number, number, number>(list2, listMoreThan10, listAllMinus, listAllPlus)
+  console.log(value, value2)
 }

@@ -1,6 +1,8 @@
+import { optionCasting } from './type/options'
+import { eitherMeans, eitherSaveCalc } from './utils/either.fp'
 import { map, mergeMap } from './utils/list'
 import { match, matchValue } from './utils/match'
-import { concatList, getOrElse, mapToList, optionCasting, optionMap } from './utils/option.fp'
+import { concatList, getOrElse, mapToList, optionMap } from './utils/option.fp'
 
 {
   // Recursive 재귀
@@ -169,4 +171,17 @@ import { concatList, getOrElse, mapToList, optionCasting, optionMap } from './ut
 
   const list = concatList([v1, v2, v3].map((item) => optionCasting(item)))
   console.log(list)
+}
+
+{
+  const v1 = [1, 2, 3, 4, 5]
+  const v2 = [] as any
+
+  console.log(eitherMeans(v1))
+  console.log(eitherMeans(v2))
+}
+
+{
+  console.log(eitherSaveCalc(10, 20, (a, b) => a / b))
+  console.log(eitherSaveCalc(0, NaN, (a, b) => a / b))
 }

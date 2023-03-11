@@ -25,3 +25,7 @@ export const none = (): None => ({
 
 export const isSome = <T>(option: Option<T>): option is Some<T> => option.tag === 'some'
 export const isNone = (option: Option<unknown>): option is None => option.tag === 'none'
+export function optionCasting<T>(v: T): Option<T> {
+  if (!v) return none()
+  return some(v)
+}

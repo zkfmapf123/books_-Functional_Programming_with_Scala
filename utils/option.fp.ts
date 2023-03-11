@@ -12,11 +12,6 @@ export function getOrElse<T>(target: T[], list: T[]): Option<T[]> {
   return v?.length === 0 ? none() : some(v)
 }
 
-export function optionCasting<T>(v: T): Option<T> {
-  if (!v) return none()
-  return some(v)
-}
-
 export function mapToList<T>(a: Option<T[]>, b: Option<T[]>, fn: (a: T, b: T) => T): Option<T[]> {
   if (isSome(a) && isSome(b)) {
     const [aList, bList] = [a.value, b.value]

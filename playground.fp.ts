@@ -1,5 +1,6 @@
 import { map, mergeMap } from './utils/list'
 import { match, matchValue } from './utils/match'
+import { concatList, getOrElse, mapToList, optionCasting, optionMap } from './utils/option.fp'
 
 {
   // Recursive 재귀
@@ -131,4 +132,41 @@ import { match, matchValue } from './utils/match'
 
   console.log(v1)
   console.log(v2)
+}
+
+///////////////////////////////////// Option /////////////////////////////////////////
+{
+  const l1 = [1, 2, 3, 4, 5]
+  const v1 = optionMap(l1, (l) => l + 10) // {tag : 'some', value : [11,12,13,14,15]}
+  const v2 = optionMap([], (l) => l) // {tag : 'none'}
+  console.log(v1, v2)
+}
+
+{
+  const l1 = [1, 2, 3, 4, 5]
+  const v1 = getOrElse(l1, [1, 2]) // {tag : 'some', value : [11,12,13,14,15]}
+  const v2 = getOrElse(l1, [10, 20]) // {tag : 'none'}
+  console.log(v1, v2)
+}
+
+{
+  const optionMap = optionCasting([1, 2, 3, 4, 5].map((item) => item + 10))
+  console.log(optionMap)
+}
+
+{
+  const l1 = [1, 2, 3, 4, 5]
+  const l2 = [10, 20, 30, 40, 50]
+
+  const m = mapToList<number>(optionCasting(l1), optionCasting(l2), (a, b) => a + b)
+  console.log(m)
+}
+
+{
+  const v1 = [1, 2, 3, 4, 5]
+  const v2 = [10, 20, 30, 40, 50]
+  const v3 = [100, 200, 300, 400, 500]
+
+  const list = concatList([v1, v2, v3].map((item) => optionCasting(item)))
+  console.log(list)
 }

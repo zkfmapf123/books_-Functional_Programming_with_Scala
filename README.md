@@ -38,6 +38,11 @@
 - 성공과 실패를 나누고 싶을 때, 실패의 이유는 나중에 처리...
 - [Option](#type/option.ts)
 
+> Either
+
+- Left(실패), Right(성공)으로 구분
+- [Either](#type/either.ts)
+
 ## Ref
 
 - 알라딘에서 14,000원 주고 삼...

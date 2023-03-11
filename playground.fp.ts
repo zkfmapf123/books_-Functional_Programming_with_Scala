@@ -1,8 +1,10 @@
 import { optionCasting } from './type/options'
 import { eitherMeans, eitherSaveCalc } from './utils/either.fp'
+import { ifElse } from './utils/inspect'
 import { map, mergeMap } from './utils/list'
 import { match, matchValue } from './utils/match'
 import { concatList, getOrElse, mapToList, optionMap } from './utils/option.fp'
+import { nonNegativeInt } from './utils/rand'
 
 {
   // Recursive 재귀
@@ -184,4 +186,15 @@ import { concatList, getOrElse, mapToList, optionMap } from './utils/option.fp'
 {
   console.log(eitherSaveCalc(10, 20, (a, b) => a / b))
   console.log(eitherSaveCalc(0, NaN, (a, b) => a / b))
+}
+
+{
+  const v = ifElse(10 > 20, 30, 40)
+  ifElse(10 > 20, console.log('error'), 40)
+}
+
+{
+  for (let i = 0; i < 10; i++) {
+    console.log(nonNegativeInt())
+  }
 }
